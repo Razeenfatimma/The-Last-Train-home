@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Last Train Home</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     SCENE 1 — STATION GLIMPSE
+═══════════════════════════════════ -->
+<div id="stationScene" class="scene active">
+  <div class="bg-layer" id="stationBg"></div>
+  <div class="light-overlay"></div>
+  <div class="lantern-glow" id="lanternGlow"></div>
+  <div class="sun-glow"></div>
+  <div class="particles" id="stationParticles"></div>
+  <div class="firefly-layer" id="stationFireflies"></div>
+  <div class="grass-fore">
+    <div id="stationGrass" class="blade-container"></div>
+  </div>
+  <div class="vignette"></div>
+  <div class="spirit-hint" id="spiritHint"><div class="spirit-orb"></div></div>
+  <div class="title-block" id="stationTitle">
+    <p class="subtitle">somewhere between here and gone</p>
+    <h1 class="title">The Last Train Home</h1>
+    <button class="begin-btn" onclick="goTo('field')">begin</button>
+  </div>
+  <button class="sound-btn" id="soundBtn">♪ sound off</button>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCENE 2 — FIELD
+═══════════════════════════════════ -->
+<div id="fieldScene" class="scene">
+  <div class="bg-layer" id="fieldBg"></div>
+  <div class="field-sun-glow" id="fieldSunGlow"></div>
+  <div class="particles" id="fieldParticles"></div>
+  <div class="firefly-layer" id="fieldFireflies"></div>
+  <div id="butterfly" class="butterfly-wrap">
+    <svg width="32" height="22" viewBox="0 0 48 32" style="overflow:visible;">
+      <g id="wingLeft"  style="transform-origin:24px 16px;">
+        <ellipse cx="12" cy="14" rx="13" ry="9"  fill="rgba(220,140,40,0.9)"/>
+        <ellipse cx="10" cy="22" rx="8"  ry="6"  fill="rgba(190,100,20,0.78)"/>
+      </g>
+      <g id="wingRight" style="transform-origin:24px 16px;">
+        <ellipse cx="36" cy="14" rx="13" ry="9"  fill="rgba(220,140,40,0.9)"/>
+        <ellipse cx="38" cy="22" rx="8"  ry="6"  fill="rgba(190,100,20,0.78)"/>
+      </g>
+      <ellipse cx="24" cy="16" rx="2" ry="8" fill="#3a2000"/>
+    </svg>
+  </div>
+  <div class="grass-fore">
+    <div id="fieldGrass" class="blade-container"></div>
+  </div>
+  <div class="vignette"></div>
+  <div class="scene-title-block" id="fieldTitle">
+    <h2 class="scene-title">Through The Fields</h2>
+    <p class="scene-sub">Every step takes you closer to the unknown.</p>
+  </div>
+  <button class="walk-btn" id="fieldBtn" onclick="goTo('shrine')">continue walking →</button>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCENE 3 — FOREST SHRINE
+═══════════════════════════════════ -->
+<div id="shrineScene" class="scene">
+  <div class="bg-layer" id="shrineBg"></div>
+
+  <!-- Dark breathing overlay — something watching -->
+  <div class="shrine-watch" id="shrineWatch"></div>
+
+  <!-- Wind streaks -->
+  <div class="wind-layer" id="windLayer"></div>
+
+  <div class="particles" id="shrineParticles"></div>
+  <div class="firefly-layer" id="shrineFireflies"></div>
+
+  <!-- Tiny spirits -->
+  <div id="shrineSpirits"></div>
+
+  <div class="grass-fore">
+    <div id="shrineGrass" class="blade-container"></div>
+  </div>
+  <div class="vignette dark-vignette"></div>
+
+  <div class="scene-title-block" id="shrineTitle">
+    <h2 class="scene-title">The Forest Shrine</h2>
+    <p class="scene-sub">Something ancient watches from the shadows.</p>
+  </div>
+  <button class="walk-btn" id="shrineBtn" onclick="goTo('lake')">walk to the lake →</button>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCENE 4 — LAKESIDE
+═══════════════════════════════════ -->
+<div id="lakeScene" class="scene">
+  <div class="bg-layer" id="lakeBg"></div>
+
+  <!-- Moon glow on water -->
+  <div class="moon-glow" id="moonGlow"></div>
+  <div class="water-shimmer" id="waterShimmer"></div>
+
+  <div class="particles" id="lakeParticles"></div>
+  <div class="firefly-layer" id="lakeFireflies"></div>
+
+  <!-- Lake spirits -->
+  <div id="lakeSpirits"></div>
+
+  <div class="grass-fore">
+    <div id="lakeGrass" class="blade-container"></div>
+  </div>
+  <div class="vignette"></div>
+
+  <div class="scene-title-block" id="lakeTitle">
+    <h2 class="scene-title">Moonwater Lake</h2>
+    <p class="scene-sub">The train leaves at midnight. You still have time.</p>
+  </div>
+  <button class="walk-btn" id="lakeBtn" onclick="goTo('end')">return to the station →</button>
+</div>
+
+<!-- ═══════════════════════════════════
+     SCENE 5 — FINAL STATION
+═══════════════════════════════════ -->
+<div id="endScene" class="scene">
+  <div class="bg-layer" id="endBg"></div>
+
+  <!-- Train coming — light beam from distance -->
+  <div class="train-light" id="trainLight"></div>
+  <div class="train-smoke" id="trainSmoke"></div>
+
+  <div class="particles" id="endParticles"></div>
+  <div class="firefly-layer" id="endFireflies"></div>
+
+  <div class="grass-fore">
+    <div id="endGrass" class="blade-container"></div>
+  </div>
+  <div class="vignette"></div>
+
+  <!-- Farewell message -->
+  <div class="farewell-block" id="farewellBlock">
+    <p class="farewell-sub">the last train has arrived</p>
+    <h2 class="farewell-title">Time To Go Home</h2>
+    <p class="farewell-msg">You carry the memories of this evening with you.</p>
+    <div class="farewell-buttons">
+      <button class="begin-btn" onclick="goTo('leaving')">Board The Train</button>
+      <button class="begin-btn" onclick="restartJourney()">Begin Again</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 6 — TRAIN LEAVING -->
+<div id="leavingScene" class="scene">
+  <div class="leaving-center">
+    <p class="leaving-line leaving-sub" style="margin-bottom:30px;">the train departs at midnight</p>
+    <h2 class="leaving-line leaving-title">Goodbye, Minatomachi.</h2>
+    <p class="leaving-line leaving-sub" style="margin-top:20px;">until next time.</p>
+  </div>
+  <button id="leavingBtn" class="begin-btn"
+    onclick="restartJourney()"
+    style="position:absolute;bottom:12%;left:50%;transform:translateX(-50%);opacity:0;">
+    Begin Again
+  </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
